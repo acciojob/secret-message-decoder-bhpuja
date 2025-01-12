@@ -1,16 +1,35 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secret Message Decoder</title>
 </head>
-
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
+  <h1>Secret Message Decoder</h1>
+  <button id="decodeButton">Decode Secret Message</button>
+  <p id="decodedMessage"></p>
 
+  <script>
+    // Function to decode the message
+    function decodeMessage(encryptedMessage) {
+      // Let's assume the message is encoded by shifting the characters' ASCII values
+      return encryptedMessage
+        .split('')
+        .map(char => String.fromCharCode(char.charCodeAt(0) - 1)) // Shifting characters by 1
+        .join('');
+    }
+
+    // Create an object in heap memory to store the encrypted message
+    const secretMessageObject = {
+      encryptedMessage: 'Uifsf!Tfbufs!' // 'This!Teats!' shifted by 1 (for example)
+    };
+
+    // Access the object from heap memory and decode the message
+    document.getElementById('decodeButton').addEventListener('click', function() {
+      const decodedMessage = decodeMessage(secretMessageObject.encryptedMessage);
+      document.getElementById('decodedMessage').textContent = `Decoded Message: ${decodedMessage}`;
+    });
+  </script>
 </body>
-
 </html>
